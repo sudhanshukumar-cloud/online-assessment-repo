@@ -31,6 +31,7 @@ const Registration = () => {
       });
     }
   };
+  console.log("hello sudhansu")
 
 
   // Dummy function to validate passcode with backend
