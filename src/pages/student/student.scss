@@ -1,0 +1,122 @@
+// .student-root {
+//   /* Common student pages styles (previously Registration.scss) */
+// }
+
+.registration-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  .registration-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+
+    form {
+      .form-group {
+        margin-bottom: 20px;
+
+        label {
+          display: block;
+          margin-bottom: 8px;
+          color: #333;
+          font-weight: 600;
+          font-size: 14px;
+        }
+
+        input {
+          width: 100%;
+          box-sizing: border-box;
+          padding-top: 12px;
+          padding-bottom: 12px;
+          padding-left: 15px;
+          padding-right: 15px;
+          border: 2px solid #e0e0e0;
+          border-radius: 5px;
+          font-size: 14px;
+          line-height: 1.2;
+          transition: border-color 0.3s, box-shadow 0.3s;
+          font-family: inherit;
+          -webkit-appearance: none;
+          appearance: none;
+
+          &:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          }
+
+          &.input-error {
+            border-color: #e74c3c;
+            
+            &:focus {
+              box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+            }
+          }
+
+          &::placeholder {
+            color: #999;
+          }
+        }
+
+        .error-text {
+          display: block;
+          color: #e74c3c;
+          font-size: 12px;
+          margin-top: 5px;
+        }
+      }
+
+      .btn-next {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 12px 15px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        margin-top: 20px;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .registration-container {
+    .registration-card {
+      padding: 30px 20px;
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  }
+}
