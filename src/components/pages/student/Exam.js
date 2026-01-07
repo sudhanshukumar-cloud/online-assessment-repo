@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './student.scss';
-import { QUESTIONS } from '../../question';
+import {QUESTIONS} from '../../../question';
 import Modal from '../../common/Modal';
 
 const Exam = () => {
@@ -69,7 +69,7 @@ const Exam = () => {
     <>
     <div className="exam-root">
       <header className="exam-header">
-        <div className="exam-title">Test Name</div>
+        <div className="exam-title">Javascript Test </div>
         <div className="exam-progress">Question {current + 1} of {questions.length}</div>
       </header>
 
@@ -133,7 +133,7 @@ const Exam = () => {
         onConfirm={() => setSuccessOpen(false)}
         confirmText="OK"
       >
-        <div>Test submitted. (Saved locally)</div>
+        <div>Test submitted successfully</div>
       </Modal>
       </>
   );

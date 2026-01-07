@@ -23,7 +23,7 @@ const Instructions = () => {
           <li>Read each question carefully before answering</li>
           <li>Your answers are saved automatically</li>
           <li>You can move between questions</li>
-          <li>Do not refresh or open in another tab</li>
+          <li>Do not refresh or open in another tab for </li>
         </ul>
 
         <label className="acknowledge">
