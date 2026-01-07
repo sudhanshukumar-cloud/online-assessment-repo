@@ -6,12 +6,14 @@ import './student.scss';
 const Registration = () => {
   const { linkCode } = useParams();
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
-    fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     college: '',
     branch: '',
+    mobile: '',
     passcode: ''
   });
 
@@ -31,7 +33,6 @@ const Registration = () => {
       });
     }
   };
-  console.log("hello sudhansu")
 
 
   // Dummy function to validate passcode with backend
@@ -45,7 +46,7 @@ const Registration = () => {
       // });
       // const data = await response.json();
       // return data.isValid;
-      
+
       // Dummy validation: passcode must be at least 4 characters
       return passcode.length >= 4;
     } catch (error) {
@@ -56,37 +57,47 @@ const Registration = () => {
 
   const validateForm = async () => {
     const newErrors = {};
-    
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required';
     }
-    
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required';
+    }
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    
+
     if (!formData.college.trim()) {
       newErrors.college = 'College is required';
     }
-    
+
     if (!formData.branch.trim()) {
       newErrors.branch = 'Branch is required';
     }
-    
+
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = 'Mobile number is required';
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = 'Enter a valid 10-digit mobile number';
+    }
+
     if (!formData.passcode.trim()) {
       newErrors.passcode = 'Passcode is required';
     } else {
-      // Validate passcode with dummy function
       const isValidPasscode = await validatePasscode(formData.passcode);
       if (!isValidPasscode) {
         newErrors.passcode = 'Invalid passcode';
       }
     }
-    
+
     return newErrors;
   };
+
   const handleNext = (e) => {
     e.preventDefault();
     validateForm().then(newErrors => {
@@ -104,20 +115,34 @@ const Registration = () => {
     <div className="registration-container">
       <div className="registration-card">
         <h1>Registration</h1>
-        
+
         <form onSubmit={handleNext}>
           <div className="form-group">
-            <label htmlFor="fullName">Full Name *</label>
+            <label htmlFor="firstName">First Name *</label>
             <input
               type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
-              placeholder="Enter your full name"
-              className={errors.fullName ? 'input-error' : ''}
+              placeholder="Enter your first name"
+              className={errors.firstName ? 'input-error' : ''}
             />
-            {errors.fullName && <span className="error-text">{errors.fullName}</span>}
+            {errors.firstName && <span className="error-text">{errors.firstName}</span>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="lastName">Last Name *</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Enter your last name"
+              className={errors.lastName ? 'input-error' : ''}
+            />
+            {errors.lastName && <span className="error-text">{errors.lastName}</span>}
           </div>
 
           <div className="form-group">
@@ -132,6 +157,20 @@ const Registration = () => {
               className={errors.email ? 'input-error' : ''}
             />
             {errors.email && <span className="error-text">{errors.email}</span>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="mobile">Mobile No *</label>
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              placeholder="Enter your mobile number"
+              className={errors.mobile ? 'input-error' : ''}
+            />
+            {errors.mobile && <span className="error-text">{errors.mobile}</span>}
           </div>
 
           <div className="form-group">
